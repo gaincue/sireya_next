@@ -24,3 +24,16 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* HeldaneDisplay font-face (update src to your actual font file) */
+@font-face {
+  font-family: 'HeldaneDisplay';
+  src: url('/fonts/HeldaneDisplay/HeldaneDisplay-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-heldane {
+  font-family: 'HeldaneDisplay', serif;
+}
