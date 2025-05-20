@@ -4,10 +4,27 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import React from "react"
 
-const images = ["/1.png", "/2.png", "/3.png", "/4.png"]
+const images = ["/1_desktop.png", "/2_desktop.png", "/3_desktop.png", "/4_desktop.png"]
+const imagesMobile = ["/1_mobile.png", "/2_mobile.png", "/3_mobile.png", "/4_mobile.png"]
+
+// Responsive hook to detect mobile screen
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth < breakpoint)
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [breakpoint])
+  return isMobile
+}
 
 export default function Home() {
   const [current, setCurrent] = useState(0)
+  const isMobile = useIsMobile()
+  const imagesToShow = isMobile ? imagesMobile : images
 
   // Drag state
   const drag = React.useRef({ startX: 0, lastX: 0, dragging: false })
@@ -17,19 +34,19 @@ export default function Home() {
   useEffect(() => {
     function startInterval() {
       intervalRef.current = setInterval(() => {
-        setCurrent((prev) => (prev + 1) % images.length)
+        setCurrent((prev) => (prev + 1) % imagesToShow.length)
       }, 8000)
     }
     startInterval()
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current)
     }
-  }, [])
+  }, [imagesToShow.length])
 
   function resetInterval() {
     if (intervalRef.current) clearInterval(intervalRef.current)
     intervalRef.current = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length)
+      setCurrent((prev) => (prev + 1) % imagesToShow.length)
     }, 8000)
   }
 
@@ -54,13 +71,13 @@ export default function Home() {
     const threshold = 50 // px
     if (dx > threshold) {
       setCurrent((prev) => {
-        const next = (prev - 1 + images.length) % images.length
+        const next = (prev - 1 + imagesToShow.length) % imagesToShow.length
         resetInterval()
         return next
       })
     } else if (dx < -threshold) {
       setCurrent((prev) => {
-        const next = (prev + 1) % images.length
+        const next = (prev + 1) % imagesToShow.length
         resetInterval()
         return next
       })
@@ -80,7 +97,7 @@ export default function Home() {
       style={{ touchAction: "pan-y" }}
     >
       {/* Carousel Images */}
-      {images.map((src, idx) => (
+      {imagesToShow.map((src, idx) => (
         <Image
           key={src}
           src={src}
