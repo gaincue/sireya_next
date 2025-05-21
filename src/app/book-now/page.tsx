@@ -36,28 +36,28 @@ export default function Home() {
       />
 
       {/* backdrop text */}
-      <div className="fixed inset-0 z-20">
+      <div className="fixed inset-0 z-20 font-heldane">
         <div className="frosted">
           <div className="backdrop" />
         </div>
         <div className="text-black/80 absolute sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 p-4 mt-24 sm:mt-0 sm:p-0 space-y-2 w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto">
-          <h4 className="text-lg sm:text-3xl md:text-5xl font-medium">
+          <h4 className="text-lg sm:text-3xl xl:text-5xl font-medium">
             A timeless legacy welcomes a new beginning
           </h4>
-          <p className="mt-2 sm:mt-4 text-sm sm:text-lg md:text-2xl">
+          <p className="mt-2 sm:mt-4 text-sm sm:text-lg xl:text-2xl">
             The iconic beachfront hideaway — once home to One&Only — enters a new chapter.
           </p>
-          <p className="text-sm sm:text-lg md:text-2xl">
+          <p className="text-sm sm:text-lg xl:text-2xl">
             Soon to be reimagined as a contemporary luxury wellness resort, this award-winning
             destination will pair world-class hospitality and the unmistakable touch of legendary
             architect Kerry Hill with a fresh perspective under a globally-renowned name.
           </p>
-          <p className="text-sm sm:text-lg md:text-2xl">
+          <p className="text-sm sm:text-lg xl:text-2xl">
             As the transformation unfolds, the resort remains open and ready to welcome guests. From
             beachside lounging and enriching activities for little ones to curated dining and
             indulgent spa treatments, signature experiences continue, uninterrupted.
           </p>
-          <p className="text-sm sm:text-lg md:text-2xl">
+          <p className="text-sm sm:text-lg xl:text-2xl">
             Reservation enquiries can be made by calling{" "}
             <a className="underline" href="tel:+6078783400">
               +607 878 3400
