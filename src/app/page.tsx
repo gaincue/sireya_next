@@ -4,8 +4,27 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import React from "react"
 
-const images = ["/1_desktop.png", "/2_desktop.png", "/3_desktop.png", "/4_desktop.png"]
-const imagesMobile = ["/1_mobile.png", "/2_mobile.png", "/3_mobile.png", "/4_mobile.png"]
+const images = [
+  "/1_desktop.png",
+  "/2_desktop.png",
+  "/3_desktop.png",
+  "/4_desktop.png",
+  "/4_desktop.png",
+]
+const imagesMobile = [
+  "/1_mobile.png",
+  "/2_mobile.png",
+  "/3_mobile.png",
+  "/4_mobile.png",
+  "/4_mobile.png",
+]
+const headlines = [
+  "Cradled in coastal wonder",
+  "Composed with graceful precision",
+  "Rooted in place and purpose",
+  "A sanctuary blossoms anew",
+  "A new chapter begins",
+]
 
 // Responsive hook to detect mobile screen
 function useIsMobile(breakpoint = 768) {
@@ -31,23 +50,26 @@ export default function Home() {
 
   const intervalRef = React.useRef<NodeJS.Timeout | null>(null)
 
+  // Dynamic interval based on current frame
   useEffect(() => {
-    function startInterval() {
-      intervalRef.current = setInterval(() => {
-        setCurrent((prev) => (prev + 1) % imagesToShow.length)
-      }, 8000)
-    }
-    startInterval()
+    if (intervalRef.current) clearInterval(intervalRef.current)
+    const isLast = current === imagesToShow.length - 1
+    const duration = isLast ? 30000 : 8000
+    intervalRef.current = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % imagesToShow.length)
+    }, duration)
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current)
     }
-  }, [imagesToShow.length])
+  }, [current, imagesToShow.length])
 
   function resetInterval() {
     if (intervalRef.current) clearInterval(intervalRef.current)
+    const isLast = current === imagesToShow.length - 1
+    const duration = isLast ? 30000 : 8000
     intervalRef.current = setInterval(() => {
       setCurrent((prev) => (prev + 1) % imagesToShow.length)
-    }, 8000)
+    }, duration)
   }
 
   function onPointerDown(e: React.PointerEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) {
@@ -99,7 +121,7 @@ export default function Home() {
       {/* Carousel Images */}
       {imagesToShow.map((src, idx) => (
         <Image
-          key={src}
+          key={`${src}-${idx}`}
           src={src}
           alt={`Carousel image ${idx + 1}`}
           fill
@@ -112,23 +134,18 @@ export default function Home() {
         />
       ))}
 
-      {/* Top Center Logo */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 z-20 select-none">
-        <h1 className="text-white text-4xl font-bold font-heldane tracking-wide drop-shadow-lg">
-          The Sirēya
-        </h1>
-      </div>
-
-      {/* Bottom Left Headline */}
-      <div className="absolute bottom-8 left-8 z-20 select-none">
-        <h4 className="text-white text-2xl sm:text-4xl font-semibold font-heldane drop-shadow-xl">
-          Descriptions
-        </h4>
-      </div>
+      {/* Bottom Left Headline or BookNow Text */}
+      {current < 4 && (
+        <div className="absolute bottom-12 left-4 sm:left-12 z-20 select-none max-w-xl">
+          <h4 className="text-white text-2xl sm:text-4xl font-semibold font-heldane drop-shadow-xl">
+            {headlines[current]}
+          </h4>
+        </div>
+      )}
 
       {/* Bottom Right Copyright */}
-      <div className="absolute bottom-8 right-8 z-20 select-none">
-        <h4 className="text-white text-sm sm:text-xl font-semibold font-heldane drop-shadow-xl">
+      <div className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 z-20 select-none">
+        <h4 className="text-white text-xs sm:text-xl font-semibold font-heldane drop-shadow-xl">
           &copy; SC Shekar 2020
         </h4>
       </div>
@@ -142,6 +159,45 @@ export default function Home() {
             "linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0) 100%)",
         }}
       />
+
+      {current === 4 && (
+        <div className="fixed inset-0 z-20 ">
+          <div className="frosted">
+            <div className="backdrop" />
+          </div>
+          <div className="absolute sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 p-4 mt-24 sm:mt-0 sm:p-0 space-y-2">
+            <h4 className="text-2xl sm:text-5xl">A timeless legacy welcomes a new beginning</h4>
+            <p className="mt-2 sm:mt-12 text-md sm:text-2xl">
+              The iconic beachfront hideaway — once home to One&Only — enters a new chapter.
+            </p>
+            <p className="text-md sm:text-2xl">
+              Soon to be reimagined as a contemporary luxury wellness resort, this award-winning
+              destination will pair world-class hospitality and the unmistakable touch of legendary
+              architect Kerry Hill with a fresh perspective under a globally-renowned name.
+            </p>
+            <p className="text-md sm:text-2xl">
+              As the transformation unfolds, the resort remains open and ready to welcome guests.
+              From beachside lounging and enriching activities for little ones to curated dining and
+              indulgent spa treatments, signature experiences continue, uninterrupted.
+            </p>
+            <p className="text-md sm:text-2xl">
+              Reservation enquiries can be made by calling +607 878 3400 or via WhatsApp at +6019
+              770 1359.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Top Center Logo */}
+      <div className="absolute top-8 left-0 right-0 text-center z-30 select-none">
+        <h1
+          className={`${
+            current === 4 ? "text-black/80" : "text-white"
+          } text-5xl font-bold font-heldane tracking-wide drop-shadow-lg transition-colors duration-10()0`}
+        >
+          The Sirēya
+        </h1>
+      </div>
     </div>
   )
 }
