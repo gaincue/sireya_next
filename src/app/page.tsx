@@ -144,8 +144,8 @@ export default function Home() {
       )}
 
       {/* Bottom Right Copyright */}
-      <div className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 z-20 select-none">
-        <h4 className="text-white text-xs sm:text-xl font-semibold font-heldane drop-shadow-xl">
+      <div className="absolute bottom-2 right-2 sm:bottom-8 sm:right-8 z-20 select-none">
+        <h4 className="text-white text-[0.6rem] sm:text-xl font-semibold font-heldane drop-shadow-xl">
           &copy; SC Shekar 2020
         </h4>
       </div>
@@ -165,22 +165,22 @@ export default function Home() {
           <div className="frosted">
             <div className="backdrop" />
           </div>
-          <div className="absolute sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 p-4 mt-24 sm:mt-0 sm:p-0 space-y-2">
-            <h4 className="text-2xl sm:text-5xl">A timeless legacy welcomes a new beginning</h4>
-            <p className="mt-2 sm:mt-12 text-md sm:text-2xl">
+          <div className="text-black/80 absolute sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 p-4 mt-24 sm:mt-0 sm:p-0 space-y-2">
+            <h4 className="text-xl sm:text-5xl">A timeless legacy welcomes a new beginning</h4>
+            <p className="mt-2 sm:mt-12 text-sm sm:text-2xl">
               The iconic beachfront hideaway — once home to One&Only — enters a new chapter.
             </p>
-            <p className="text-md sm:text-2xl">
+            <p className="text-sm sm:text-2xl">
               Soon to be reimagined as a contemporary luxury wellness resort, this award-winning
               destination will pair world-class hospitality and the unmistakable touch of legendary
               architect Kerry Hill with a fresh perspective under a globally-renowned name.
             </p>
-            <p className="text-md sm:text-2xl">
+            <p className="text-sm sm:text-2xl">
               As the transformation unfolds, the resort remains open and ready to welcome guests.
               From beachside lounging and enriching activities for little ones to curated dining and
               indulgent spa treatments, signature experiences continue, uninterrupted.
             </p>
-            <p className="text-md sm:text-2xl">
+            <p className="text-sm sm:text-2xl">
               Reservation enquiries can be made by calling +607 878 3400 or via WhatsApp at +6019
               770 1359.
             </p>
