@@ -1,14 +1,24 @@
 "use client"
 
-import { buttonVariants } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import Link from "next/link"
 import { useState, useEffect } from "react"
 import React from "react"
 
-const images = ["/1_desktop.png", "/2_desktop.png", "/3_desktop.png", "/4_desktop.png"]
-const imagesMobile = ["/1_mobile.png", "/2_mobile.png", "/3_mobile.png", "/4_mobile.png"]
+const images = [
+  "/1_desktop.png",
+  "/2_desktop.png",
+  "/3_desktop.png",
+  "/4_desktop.png",
+  "/4_desktop.png",
+]
+const imagesMobile = [
+  "/1_mobile.png",
+  "/2_mobile.png",
+  "/3_mobile.png",
+  "/4_mobile.png",
+  "/4_mobile.png",
+]
 const headlines = [
   "Cradled in coastal wonder",
   "Composed with graceful precision",
@@ -70,7 +80,7 @@ export default function Home() {
       {/* Carousel Images */}
       {imagesToShow.map((src, idx) => (
         <Image
-          key={src}
+          key={src + idx}
           src={src}
           alt={`Carousel image ${idx + 1}`}
           fill
@@ -153,17 +163,58 @@ export default function Home() {
         }}
       />
 
+      {/* backdrop text */}
+      {current === 4 && (
+        <div className="fixed inset-0 z-20 font-heldane">
+          <div className="frosted">
+            <div className="backdrop" />
+          </div>
+          <div className="text-black/80 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 mt-8 sm:mt-0 lg:p-0 space-y-2 w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto px-17">
+            <h4 className="text-lg sm:text-3xl xl:text-5xl font-semibold">
+              A timeless legacy welcomes a new beginning
+            </h4>
+            <p className="mt-2 sm:mt-4 text-sm sm:text-lg xl:text-2xl">
+              The iconic beachfront hideaway — once home to One&Only — enters a new chapter.
+            </p>
+            <p className="text-sm sm:text-lg xl:text-2xl">
+              Soon to be reimagined as a contemporary luxury wellness resort, this award-winning
+              destination will pair world-class hospitality and the unmistakable touch of legendary
+              architect Kerry Hill with a fresh perspective under a globally-renowned name.
+            </p>
+            <p className="text-sm sm:text-lg xl:text-2xl">
+              As the transformation unfolds, the resort remains open and ready to welcome guests.
+              From beachside lounging and enriching activities for little ones to curated dining and
+              indulgent spa treatments, signature experiences continue, uninterrupted.
+            </p>
+            <p className="text-sm sm:text-lg xl:text-2xl">
+              Reservation enquiries can be made by calling{" "}
+              <a className="underline" href="tel:+6078783400">
+                +607 878 3400
+              </a>{" "}
+              or via WhatsApp at{" "}
+              <a className="underline" href="https://wa.me/60197701359">
+                +6019 770 1359
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+      )}
+
       <div className="absolute top-8 left-4 right-4 sm:left-12 sm:right-12 z-30 select-none">
         <div className="flex flex-row justify-between items-center">
-          <h1 className="text-white text-5xl font-bold font-heldane tracking-wide drop-shadow-lg">
+          <h1
+            className={`${
+              current === 4 ? "text-black" : "text-white"
+            } text-5xl font-bold font-heldane tracking-wide drop-shadow-lg transition-colors duration-200`}
+          >
             The Sirēya
           </h1>
-          <Link
-            href="/book-now"
-            className={cn(buttonVariants({ variant: "default" }), "rounded-none px-3")}
-          >
-            Book Now
-          </Link>
+          {current < 4 && (
+            <Button onClick={() => setCurrent(4)} className="cursor-pointer rounded-none px-3">
+              Book Now
+            </Button>
+          )}
         </div>
       </div>
     </div>
