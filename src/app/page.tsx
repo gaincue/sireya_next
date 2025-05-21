@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import React from "react"
@@ -165,11 +166,15 @@ export default function Home() {
 
       {/* backdrop text */}
       {current === 4 && (
-        <div className="fixed inset-0 z-20 font-heldane">
+        <div className="absolute inset-0 z-20 font-heldane flex flex-col justify-center items-center">
           <div className="frosted">
             <div className="backdrop" />
           </div>
-          <div className="text-black/80 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 mt-8 sm:mt-0 lg:p-0 space-y-2 w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto px-17">
+          <ScrollArea
+            className={
+              "flex flex-col justify-center items-center text-black/80 pt-16 space-y-2 w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto px-18 relative h-[calc(100svh-4rem)] sm:h-auto height-mobile:h-[calc(100svh-4rem)]"
+            }
+          >
             <h4 className="text-lg sm:text-3xl xl:text-5xl font-semibold">
               A timeless legacy welcomes a new beginning
             </h4>
@@ -197,7 +202,7 @@ export default function Home() {
               </a>
               .
             </p>
-          </div>
+          </ScrollArea>
         </div>
       )}
 
