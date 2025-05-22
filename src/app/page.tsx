@@ -150,7 +150,7 @@ export default function Home() {
       {/* Bottom Right Copyright */}
       <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 z-20 select-none">
         <h4 className="text-gray-400/80 text-[0.6rem] sm:text-sm font-semibold font-heldane drop-shadow-xl">
-          &copy; SC Shekar 2020
+          &copy; SC Shekar
         </h4>
       </div>
 
