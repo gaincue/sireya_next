@@ -227,7 +227,7 @@ export default function Home() {
                 meticulous rebrand.
               </p>
               <p className="text-sm sm:text-lg xl:text-2xl">
-                This award-winning resort will be reimagined as a contemporary luxury wellness
+                This award-winning property will be reimagined as a contemporary luxury wellness
                 resort, pairing the exceptional hospitality of Mandarin Oriental with the
                 unmistakable touch of legendary architect Kerry Hill, ushering in an era of
                 unparalleled experiences.
