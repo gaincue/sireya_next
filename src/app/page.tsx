@@ -113,14 +113,12 @@ export default function Home() {
           priority={idx === 0}
           className={`transition-opacity duration-1000 absolute inset-0 ${
             idx === current ? "opacity-100 z-10" : "opacity-0 z-0"
-          } 
-          ${
+          }${
             // idx === 4
             //   ? "object-contain !w-1/2 !h-1/2 !left-1/2 !top-1/2 !-translate-x-1/2 !-translate-y-1/2"
             //   : "object-cover  w-full h-full"
             ""
-          }
-          `}
+          }`}
           draggable={false}
           unoptimized
         />
