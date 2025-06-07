@@ -208,6 +208,7 @@ export default function Home() {
               className={`transition-opacity duration-1000 absolute inset-0 opacity-100 z-10 object-contain !w-1/2 !h-1/2 !left-1/2 !top-1/2 !-translate-x-1/2 !-translate-y-1/2`}
               draggable={false}
               unoptimized
+              priority
             />
           )}
           {current == imagesToShow.length - 1 && (
