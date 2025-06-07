@@ -12,12 +12,16 @@ const images = [
   "/3_desktop.png",
   "/4_desktop.png",
   "/4_desktop.png",
+  // "/mandarin_oriental.png",
+  "/4_desktop.png",
 ]
 const imagesMobile = [
   "/1_mobile.png",
   "/2_mobile.png",
   "/3_mobile.png",
   "/4_mobile.png",
+  "/4_mobile.png",
+  // "/mandarin_oriental.png",
   "/4_mobile.png",
 ]
 const headlines = [
@@ -56,21 +60,27 @@ export default function Home() {
 
   // Dynamic interval based on current frame
   useEffect(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current)
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+    }
     const isLast = current === imagesToShow.length - 1
-    const duration = isLast ? 30000 : 8000
+    const duration = isLast ? 30000 : 30000
     intervalRef.current = setInterval(() => {
       setCurrent((prev) => (prev + 1) % imagesToShow.length)
     }, duration)
     return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current)
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
     }
   }, [current, imagesToShow.length])
 
   function resetInterval() {
-    if (intervalRef.current) clearInterval(intervalRef.current)
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+    }
     const isLast = current === imagesToShow.length - 1
-    const duration = isLast ? 30000 : 8000
+    const duration = isLast ? 30000 : 30000
     intervalRef.current = setInterval(() => {
       setCurrent((prev) => (prev + 1) % imagesToShow.length)
     }, duration)
@@ -86,9 +96,16 @@ export default function Home() {
           alt={`Carousel image ${idx + 1}`}
           fill
           priority={idx === 0}
-          className={`object-cover transition-opacity duration-1000 absolute inset-0 w-full h-full ${
+          className={`transition-opacity duration-1000 absolute inset-0 ${
             idx === current ? "opacity-100 z-10" : "opacity-0 z-0"
-          }`}
+          } 
+          ${
+            // idx === 4
+            //   ? "object-contain !w-1/2 !h-1/2 !left-1/2 !top-1/2 !-translate-x-1/2 !-translate-y-1/2"
+            //   : "object-cover  w-full h-full"
+            ""
+          }
+          `}
           draggable={false}
           unoptimized
         />
@@ -139,7 +156,7 @@ export default function Home() {
       </button>
 
       {/* Bottom Left Headline or BookNow Text */}
-      {current < 4 && (
+      {current < imagesToShow.length - 1 && (
         <div className="absolute bottom-12 left-4 sm:left-12 z-20 select-none">
           <h4 className="text-white text-2xl sm:text-5xl font-semibold font-heldane drop-shadow-xl w-full whitespace-pre-line">
             {(isMobile ? headlinesMobile : headlines)[current]}
@@ -165,44 +182,63 @@ export default function Home() {
       />
 
       {/* backdrop text */}
-      {current === 4 && (
+      {current >= imagesToShow.length - 2 && (
         <div className="absolute inset-0 z-20 font-heldane flex flex-col justify-center items-center">
           <div className="frosted">
             <div className="backdrop" />
           </div>
-          <ScrollArea
-            className={
-              "flex flex-col justify-center items-center text-black/80 pt-16 space-y-2 w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto px-18 relative h-[calc(100svh-4rem)] sm:h-auto height-mobile:h-[calc(100svh-4rem)]"
-            }
-          >
-            <h4 className="text-lg sm:text-3xl xl:text-5xl font-semibold">
-              A timeless legacy welcomes a new beginning
-            </h4>
-            <p className="mt-2 sm:mt-4 text-sm sm:text-lg xl:text-2xl">
-              The iconic beachfront hideaway — once home to One&Only — enters a new chapter.
-            </p>
-            <p className="text-sm sm:text-lg xl:text-2xl">
-              Soon to be reimagined as a contemporary luxury wellness resort, this award-winning
-              destination will pair world-class hospitality and the unmistakable touch of legendary
-              architect Kerry Hill with a fresh perspective under a globally-renowned name.
-            </p>
-            <p className="text-sm sm:text-lg xl:text-2xl">
-              As the transformation unfolds, the resort remains open and ready to welcome guests.
-              From beachside lounging and enriching activities for little ones to curated dining and
-              indulgent spa treatments, signature experiences continue, uninterrupted.
-            </p>
-            <p className="text-sm sm:text-lg xl:text-2xl">
-              Reservation enquiries can be made by calling{" "}
-              <a className="underline" href="tel:+6078783400">
-                +607 878 3400
-              </a>{" "}
-              or via WhatsApp at{" "}
-              <a className="underline" href="https://wa.me/60197701359">
-                +6019 770 1359
-              </a>
-              .
-            </p>
-          </ScrollArea>
+          {current == imagesToShow.length - 2 && (
+            <Image
+              src="/mandarin_oriental.png"
+              alt="Mandarin Oriental"
+              fill
+              className={`transition-opacity duration-1000 absolute inset-0 opacity-100 z-10 object-contain !w-1/2 !h-1/2 !left-1/2 !top-1/2 !-translate-x-1/2 !-translate-y-1/2`}
+              draggable={false}
+              unoptimized
+            />
+          )}
+          {current == imagesToShow.length - 1 && (
+            <ScrollArea
+              className={
+                "flex flex-col justify-center items-center text-black/80 pt-16 space-y-2 w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto px-18 relative h-[calc(100svh-4rem)] sm:h-auto height-mobile:h-[calc(100svh-4rem)]"
+              }
+            >
+              <h4 className="text-lg sm:text-3xl xl:text-5xl font-semibold">
+                A timeless legacy welcomes a new beginning
+              </h4>
+              <p className="mt-2 sm:mt-4 text-sm sm:text-lg xl:text-2xl">
+                From June 2025, our iconic beachfront hideaway embarks on its next chapter as a
+                Mandarin Oriental property. Currently known as The Siréya, the resort will be
+                renamed Mandarin Oriental, Desaru Coast from January 2026, after a graceful and
+                meticulous rebrand.
+              </p>
+              <p className="text-sm sm:text-lg xl:text-2xl">
+                This award-winning destination will be reimagined as a contemporary luxury wellness
+                resort, pairing the exceptional hospitality of Mandarin Oriental with the
+                unmistakable touch of legendary architect Kerry Hill, ushering in an era of
+                unparalleled experiences.
+              </p>
+              <p className="text-sm sm:text-lg xl:text-2xl">
+                As this brief transformation unfolds, the resort remains open and ready to welcome
+                guests.
+              </p>
+              <p className="text-sm sm:text-lg xl:text-2xl">
+                Reservation enquiries can be made by e-mailing{" "}
+                <a className="underline" href="mailto:reservations@desarucoast.com">
+                  reservations@desarucoast.com
+                </a>
+                {", calling "}
+                <a className="underline" href="tel:+6078783400">
+                  +607 878 3400
+                </a>{" "}
+                or via WhatsApp at{" "}
+                <a className="underline" href="https://wa.me/60197701359">
+                  +6019 770 1359
+                </a>
+                .
+              </p>
+            </ScrollArea>
+          )}
         </div>
       )}
 
@@ -210,13 +246,16 @@ export default function Home() {
         <div className="flex flex-row justify-between items-center">
           <h1
             className={`${
-              current === 4 ? "text-black" : "text-white"
+              current >= imagesToShow.length - 2 ? "text-black" : "text-white"
             } text-5xl font-bold font-heldane tracking-wide drop-shadow-lg transition-colors duration-200`}
           >
             The Sirēya
           </h1>
-          {current < 4 && (
-            <Button onClick={() => setCurrent(4)} className="cursor-pointer rounded-none px-3">
+          {current < imagesToShow.length - 1 && (
+            <Button
+              onClick={() => setCurrent(imagesToShow.length - 1)}
+              className="cursor-pointer rounded-none px-3"
+            >
               Book Now
             </Button>
           )}
