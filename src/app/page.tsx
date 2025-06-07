@@ -86,6 +86,21 @@ export default function Home() {
     }, duration)
   }
 
+  // handle keyboard arrow keys handler for carousel
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") {
+        setCurrent((prev) => (prev - 1 + imagesToShow.length) % imagesToShow.length)
+        resetInterval()
+      } else if (event.key === "ArrowRight") {
+        setCurrent((prev) => (prev + 1) % imagesToShow.length)
+        resetInterval()
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [current, imagesToShow.length])
+
   return (
     <div className="relative w-screen h-svh overflow-hidden" style={{ touchAction: "pan-y" }}>
       {/* Carousel Images */}
