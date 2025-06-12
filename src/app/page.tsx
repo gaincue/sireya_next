@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import React from "react"
@@ -208,18 +209,20 @@ export default function Home() {
           )}
           {current == imagesToShow.length - 1 && (
             <ScrollArea
-              className={
-                "flex flex-col justify-center items-center text-black/80 pt-16 space-y-2 w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto px-18 relative h-[calc(100svh-4rem)] sm:h-auto height-mobile:h-[calc(100svh-4rem)]"
-              }
+              className={cn(
+                "flex flex-col justify-center items-center text-black/80 pt-16 space-y-2",
+                "w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto px-18 relative",
+                "h-[calc(100svh-4rem)] sm:h-[calc(100svh-8rem)] height-mobile:h-[calc(100svh-4rem)]"
+              )}
             >
               <h4 className="text-lg sm:text-3xl xl:text-5xl font-semibold">
                 A timeless legacy welcomes a new beginning
               </h4>
               <p className="mt-2 sm:mt-4 text-sm sm:text-lg xl:text-2xl">
                 From June 2025, our iconic beachfront hideaway embarks on its next chapter as a
-                Mandarin Oriental property. Currently known as The Sirēya Desaru Coast, the resort will be
-                renamed Mandarin Oriental, Desaru Coast from January 2026, after a graceful and
-                meticulous rebrand.
+                Mandarin Oriental property. Currently known as The Sirēya Desaru Coast, the resort
+                will be renamed Mandarin Oriental, Desaru Coast from January 2026, after a graceful
+                and meticulous rebrand.
               </p>
               <p className="text-sm sm:text-lg xl:text-2xl">
                 This award-winning property will be reimagined as a contemporary luxury wellness
@@ -256,7 +259,7 @@ export default function Home() {
           <h1
             className={`${
               current >= imagesToShow.length - 2 ? "text-black" : "text-white"
-            } text-5xl font-bold font-heldane tracking-wide drop-shadow-lg transition-colors duration-200`}
+            } text-3xl sm:text-5xl font-bold font-heldane tracking-wide drop-shadow-lg transition-colors duration-200`}
           >
             The Sirēya Desaru Coast
           </h1>
