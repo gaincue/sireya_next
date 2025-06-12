@@ -222,7 +222,7 @@ export default function Home() {
               </h4>
               <p className="mt-2 sm:mt-4 text-sm sm:text-lg xl:text-2xl">
                 From June 2025, our iconic beachfront hideaway embarks on its next chapter as a
-                Mandarin Oriental property. Currently known as The Sirēya, the resort will be
+                Mandarin Oriental property. Currently known as The Sirēya Desaru Coast, the resort will be
                 renamed Mandarin Oriental, Desaru Coast from January 2026, after a graceful and
                 meticulous rebrand.
               </p>
@@ -263,7 +263,7 @@ export default function Home() {
               current >= imagesToShow.length - 2 ? "text-black" : "text-white"
             } text-5xl font-bold font-heldane tracking-wide drop-shadow-lg transition-colors duration-200`}
           >
-            The Sirēya
+            The Sirēya Desaru Coast
           </h1>
           {current < imagesToShow.length - 1 && (
             <Button

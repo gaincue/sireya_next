@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "The Sirēya | Desaru Coast Luxury Resort",
+  title: "The Sirēya Desaru Coast | Desaru Coast Luxury Resort",
   description:
     "The iconic Desaru Coast luxury resort enters a new chapter. As it becomes anew, Kerry Hill's last masterpiece remains open to guests and welcomes all.",
   metadataBase: new URL("https://www.thesireya.com"),
@@ -10,17 +10,17 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "The Sirēya | Desaru Coast Luxury Resort",
+    title: "The Sirēya Desaru Coast | Desaru Coast Luxury Resort",
     description:
       "The iconic Desaru Coast luxury resort enters a new chapter. As it becomes anew, Kerry Hill's last masterpiece remains open to guests and welcomes all.",
     url: "https://www.thesireya.com",
-    siteName: "The Sirēya",
+    siteName: "The Sirēya Desaru Coast",
     images: [
       {
         url: "/1.jpg",
         width: 1200,
         height: 630,
-        alt: "The Sirēya Resort Hero Image",
+        alt: "The Sirēya Desaru Coast Resort Hero Image",
       },
     ],
     locale: "en_US",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Sirēya | Desaru Coast Luxury Resort",
+    title: "The Sirēya Desaru Coast | Desaru Coast Luxury Resort",
     description:
       "The iconic Desaru Coast luxury resort enters a new chapter. As it becomes anew, Kerry Hill's last masterpiece remains open to guests and welcomes all.",
     site: "@thesireya",
